@@ -6,40 +6,39 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  padding: 10px; /* Add padding for mobile */
+  padding: 20px;  /* Increased padding for breathing space */
   box-sizing: border-box;
 }
 
 .App {
-  width: 90%; /* Change from fixed width to flexible */
-  max-width: 400px; /* Set a maximum width */
+  width: 90%;
+  max-width: 400px; /* Adjusted to control width on mobile */
   padding: 20px;
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin: 0 auto; /* Center the container */
 }
 
 .addtask {
   display: flex;
-  flex-direction: column; /* Stack elements vertically on mobile */
   gap: 10px;
+  flex-direction: row; /* Maintain row layout */
 }
 
 input {
-  width: 100%; /* Full width for mobile */
+  flex-grow: 1;
   padding: 12px;
   border: 2px solid #ccc;
   border-radius: 8px;
   outline: none;
   font-size: 16px;
-  transition: border-color 0.3s ease;
   box-sizing: border-box;
 }
 
 button {
-  width: 100%; /* Full width for mobile */
-  padding: 12px;
+  padding: 12px 15px; /* Reduced padding for buttons */
   background-color: #4caf50;
   color: white;
   border: none;
@@ -50,66 +49,52 @@ button {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
-  background-color: #158f1b;
-  transform: scale(1.03); /* Slightly reduce scale on hover */
-}
-
 .list {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Reduce gap for mobile */
+  gap: 20px; /* Increased gap between task items */
 }
 
 .list div {
   display: flex;
-  flex-direction: column; /* Stack content vertically on mobile */
-  padding: 12px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px; /* Adjusted padding inside task items */
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-}
-
-.list div:hover {
-  transform: translateY(-2px); /* Slightly reduce movement */
 }
 
 h1 {
   margin: 0;
-  font-size: 18px; /* Slightly reduce font size */
+  font-size: 18px;
   font-weight: bold;
   color: #333;
 }
 
-.completed h1 {
-  color: #2e7d32;
-}
-
 button.delete, button.complete {
-  width: 100%; /* Buttons span full width on mobile */
-  padding: 10px;
-  margin-top: 5px; /* Add margin to separate buttons */
+  padding: 8px 12px; /* Reduced button padding */
+  margin-left: 5px; /* Small spacing between buttons */
 }
 
-/* Media query for larger screens (PC) */
-@media (min-width: 600px) {
-  .addtask {
-    flex-direction: row; /* Horizontal layout for larger screens */
-  }
-
-  button {
-    width: auto; /* Restore original button width */
+@media (max-width: 600px) {
+  .App {
+    width: 85%;  /* Slightly reduce container width */
+    max-width: 350px; /* Control maximum width */
+    padding: 15px; /* Adjust padding for smaller screens */
   }
 
   .list div {
-    flex-direction: row; /* Restore horizontal layout */
-    justify-content: space-between;
+    padding: 8px 12px; /* Reduce padding for task items */
+    gap: 8px; /* Reduce gap inside task items */
+  }
+
+  button {
+    padding: 10px 12px; /* Consistent button padding */
   }
 
   button.delete, button.complete {
-    width: auto; /* Restore original button width */
-    margin-top: 0;
+    padding: 8px 10px; /* Smaller buttons for mobile */
   }
 }
