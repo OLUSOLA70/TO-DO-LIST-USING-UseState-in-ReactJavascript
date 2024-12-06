@@ -6,11 +6,14 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
+  padding: 10px; /* Add padding for mobile */
+  box-sizing: border-box;
 }
 
 .App {
-  width: 400px;
-  padding: 25px;
+  width: 90%; /* Change from fixed width to flexible */
+  max-width: 400px; /* Set a maximum width */
+  padding: 20px;
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -19,28 +22,24 @@ body {
 
 .addtask {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  flex-direction: column; /* Stack elements vertically on mobile */
   gap: 10px;
 }
 
 input {
-  flex-grow: 1;
+  width: 100%; /* Full width for mobile */
   padding: 12px;
   border: 2px solid #ccc;
   border-radius: 8px;
   outline: none;
   font-size: 16px;
   transition: border-color 0.3s ease;
-}
-
-input:focus {
-  border-color: #4caf50;
+  box-sizing: border-box;
 }
 
 button {
-  padding: 12px 18px;
+  width: 100%; /* Full width for mobile */
+  padding: 12px;
   background-color: #4caf50;
   color: white;
   border: none;
@@ -53,28 +52,19 @@ button {
 
 button:hover {
   background-color: #158f1b;
-  transform: scale(1.05);
-}
-.task.completed h1 {
-  color: green;       
-  font-style: italic; 
-}
-
-button:focus {
-  outline: 2px solid #4caf50;
+  transform: scale(1.03); /* Slightly reduce scale on hover */
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px; /* Reduce gap for mobile */
 }
 
 .list div {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
+  flex-direction: column; /* Stack content vertically on mobile */
+  padding: 12px;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -83,34 +73,43 @@ button:focus {
 }
 
 .list div:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px); /* Slightly reduce movement */
 }
 
 h1 {
   margin: 0;
-  font-size: 20px;
+  font-size: 18px; /* Slightly reduce font size */
   font-weight: bold;
   color: #333;
-  transition: color 0.3s ease;
 }
 
 .completed h1 {
-  color: #2e7d32; /* Dark green for completed tasks */
+  color: #2e7d32;
 }
 
-button.delete {
-  background-color: #ff4d4d;
-  padding: 10px 15px;
+button.delete, button.complete {
+  width: 100%; /* Buttons span full width on mobile */
+  padding: 10px;
+  margin-top: 5px; /* Add margin to separate buttons */
 }
 
-button.delete:hover {
-  background-color: #e60000;
-}
+/* Media query for larger screens (PC) */
+@media (min-width: 600px) {
+  .addtask {
+    flex-direction: row; /* Horizontal layout for larger screens */
+  }
 
-button.complete {
-  background-color: #007bff;
-}
+  button {
+    width: auto; /* Restore original button width */
+  }
 
-button.complete:hover {
-  background-color: #0056b3;
+  .list div {
+    flex-direction: row; /* Restore horizontal layout */
+    justify-content: space-between;
+  }
+
+  button.delete, button.complete {
+    width: auto; /* Restore original button width */
+    margin-top: 0;
+  }
 }
